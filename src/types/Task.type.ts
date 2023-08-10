@@ -5,6 +5,5 @@ export interface Task {
 	name: string;
 	description: string;
 	deadlines: string;
-	images: string;
 	status: Status;
 }

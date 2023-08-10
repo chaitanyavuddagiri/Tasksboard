@@ -29,7 +29,13 @@ const TaskComponent: React.FC<TaskProps> = ({ task, onEdit, onDelete }) => {
 
 	return (
 		<Card
-			style={{ margin: "10px", backgroundColor: statusColors[task.status] }}
+			style={{
+				margin: "10px",
+				backgroundColor: statusColors[task.status],
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+			}}
 			onClick={() => setShowDetails(!showDetails)}
 		>
 			<CardContent>
