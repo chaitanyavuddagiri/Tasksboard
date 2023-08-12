@@ -2,9 +2,9 @@ import type { Config } from "@jest/types";
 
 const config: Config.InitialOptions = {
 	preset: "ts-jest",
-	testEnvironment: "node",
+	testEnvironment: "jsdom",
 	moduleNameMapper: {
-		"\\.(css|less|scss)$": "fileMock.ts",
+		"\\.(css|less|scss)$": "<rootDir>/fileMock.ts",
 	},
 };
 

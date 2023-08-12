@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useTasks } from "../context/TaskContext";
 import TaskComponent from "../components/TaskComponent";
-import TaskForm from "../components/TaskFrom";
+import TaskForm from "../components/TaskForm";
 import { Task } from "../types/Task.type";
 import "./dashboard.css";
 
@@ -66,6 +66,7 @@ const Dashboard: React.FC = () => {
 			<TaskForm
 				key="add-task"
 				open={openAddForm}
+				task={editingTask}
 				onSave={handleAdd}
 				onClose={() => setOpenAddForm(false)}
 			/>

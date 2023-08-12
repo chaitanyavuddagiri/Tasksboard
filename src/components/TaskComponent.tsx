@@ -49,10 +49,10 @@ const TaskComponent: React.FC<TaskProps> = ({ task, onEdit, onDelete }) => {
 				)}
 			</CardContent>
 			<CardActions>
-				<IconButton onClick={() => onEdit(task.id)}>
+				<IconButton onClick={() => onEdit(task.id)} data-testid="edit-icon">
 					<EditIcon />
 				</IconButton>
-				<IconButton onClick={() => onDelete(task.id)}>
+				<IconButton onClick={() => onDelete(task.id)} data-testid="delete-icon">
 					<DeleteIcon />
 				</IconButton>
 				<IconButton>

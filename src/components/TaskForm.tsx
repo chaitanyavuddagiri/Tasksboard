@@ -122,7 +122,12 @@ const TaskForm: React.FC<TaskFormProps> = ({ open, task, onSave, onClose }) => {
 						}}
 					>
 						<Button onClick={onClose}>Cancel</Button>
-						<Button type="submit" variant={"contained"}>
+						<Button
+							type="submit"
+							variant={"contained"}
+							name="savebutton"
+							data-testid="submit-button"
+						>
 							{task ? "Save" : "Add"}
 						</Button>
 					</DialogActions>

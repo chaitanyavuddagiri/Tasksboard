@@ -1,44 +1,30 @@
-import { render, screen } from "../test-utils"; // Custom render
+import { render, screen, fireEvent } from "../test-utils"; // Custom render
+import "@testing-library/jest-dom/extend-expect";
 import Dashboard from "./Dashboard";
 
 describe("Dashboard", () => {
 	test("renders the dashboard", () => {
 		render(<Dashboard />);
-		screen.debug();
 		expect(screen.getByText("Tasks")).toBeInTheDocument();
 	});
 
-	// test("adds a new task", () => {
-	// 	render(<Dashboard />);
-	// 	fireEvent.click(screen.getByText("Add Task"));
-	// 	// Fill in the form and save
-	// 	// Assuming you have input fields with labels 'Name', 'Description', etc.
-	// 	fireEvent.change(screen.getByLabelText("Name"), {
-	// 		target: { value: "Test Task" },
-	// 	});
-	// 	// Repeat for other fields
-	// 	fireEvent.click(screen.getByText("Save Task"));
-	// 	expect(screen.getByText("Test Task")).toBeInTheDocument();
-	// });
+	test("adds a new task", async () => {
+		render(<Dashboard />);
+		fireEvent.click(screen.getByText("Add Task"));
 
-	// test("edits an existing task", () => {
-	// 	// Assuming you have an existing task with the edit button
-	// 	render(<Dashboard />);
-	// 	fireEvent.click(screen.getByText("Edit")); // Click the edit button for a task
-	// 	fireEvent.change(screen.getByLabelText("Name"), {
-	// 		target: { value: "Updated Task" },
-	// 	});
-	// 	fireEvent.click(screen.getByText("Save Task"));
-	// 	expect(screen.getByText("Updated Task")).toBeInTheDocument();
-	// });
+		fireEvent.change(screen.getByLabelText("Name"), {
+			target: { value: "Test Task" },
+		});
+		fireEvent.change(screen.getByLabelText("Description"), {
+			target: { value: "Test Description" },
+		});
+		fireEvent.change(screen.getByLabelText("Deadlines"), {
+			target: { value: new Date() },
+		});
 
-	// test("deletes a task", () => {
-	// 	// Assuming you have an existing task with the delete button
-	// 	render(<Dashboard />);
-	// 	fireEvent.click(screen.getByText("Delete")); // Click the delete button for a task
-	// 	fireEvent.click(screen.getByText("Delete")); // Confirm deletion
-	// 	expect(screen.queryByText("Task to be deleted")).not.toBeInTheDocument();
-	// });
+		const button = screen.getByTestId("submit-button");
+		expect(button).toHaveTextContent("Add");
+	});
 
 	test("groups tasks by status", () => {
 		render(<Dashboard />);
